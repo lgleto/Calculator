@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var brain = CalculatorBrain()
+    var brain = CalculatorBrain() // Model
     
     var userIsIntheMiddleOfTyping = false
     
