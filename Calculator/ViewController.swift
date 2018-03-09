@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var operand : Double = 0
-    var operation : String = ""
+    var brain = CalculatorBrain()
     
     var userIsIntheMiddleOfTyping = false
     
@@ -52,26 +51,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operationPressed(_ sender: UIButton) {
-        let buttonPressed = sender
+        
         if userIsIntheMiddleOfTyping {
+            brain.setOperand(orperand: displayValue)
         }
-        
-        var result = 0.0
-        
-        switch buttonPressed.title(for: .normal)! {
-        case "+":
-            operand = displayValue
-            operation = buttonPressed.title(for: .normal)!
-        case "=" :
-            result = operand + displayValue
-            displayValue = result
-        default:
-            result = 0
-        }
-        
-        
         userIsIntheMiddleOfTyping = false
-        
+        brain.preformOperation(symbol: sender.title(for: .normal)!)
+        displayValue = brain.result
     }
     
 }
